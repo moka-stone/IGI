@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - Часто задаваемые вопросы{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Часто задаваемые вопросы</h1>
+
+    <div class="accordion" id="faqAccordion">
+        {% for faq in faqs %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ faq.id }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ faq.id }}">
+                    {{ faq.question }}
+                </button>
+            </h2>
+            <div id="collapse{{ faq.id }}" class="accordion-collapse collapse"
+                 data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                    {{ faq.answer|linebreaks }}
+                    <div class="text-muted mt-2">
+                        <small>Добавлено: {{ faq.added_date|date:"d.m.Y" }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-info">
+            FAQ скоро появятся.
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

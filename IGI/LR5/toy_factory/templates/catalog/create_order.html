@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Создание заказа{% endblock %}
+
+{% block extra_css %}
+<style>
+    .formset-item {
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+    }
+
+    .add-form-row {
+        margin-top: 10px;
+    }
+
+    .delete-form-row {
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="mb-3">
+        <a href="{% url 'catalog:order_list' %}" class="btn btn-secondary">
+            &larr; Назад к списку заказов
+        </a>
+    </div>
+
+    <h2>Создание нового заказа</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="product" class="form-label">Продукция</label>
+            <select name="product" id="product" class="form-select" required>
+                {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Количество</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" min="100" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Оформить заказ</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const orderItems = document.getElementById('order-items');
+        const addRowBtn = document.getElementById('add-form');
+
+        function updateFormIndexes() {
+            const rows = orderItems.getElementsByClassName('order-item-row');
+            for (let i = 0; i < rows.length; i++) {
+                const inputs = rows[i].getElementsByTagName('select');
+                for (let input of inputs) {
+                    const name = input.getAttribute('name');
+                    if (name) {
+                        input.setAttribute('name', name.replace(/\d+/, i));
+                        input.setAttribute('id', input.getAttribute('id').replace(/\d+/, i));
+                    }
+                }
+                const quantityInputs = rows[i].getElementsByTagName('input');
+                for (let input of quantityInputs) {
+                    if (input.type === 'number') {
+                        const name = input.getAttribute('name');
+                        if (name) {
+                            input.setAttribute('name', name.replace(/\d+/, i));
+                            input.setAttribute('id', input.getAttribute('id').replace(/\d+/, i));
+                        }
+                    }
+                }
+            }
+            const totalForms = document.getElementById('id_form-TOTAL_FORMS');
+            totalForms.value = rows.length;
+        }
+
+        addRowBtn.addEventListener('click', function () {
+            const lastRow = orderItems.querySelector('.order-item-row:last-child');
+            if (lastRow) {
+                const newRow = lastRow.cloneNode(true);
+                const inputs = newRow.getElementsByTagName('select');
+                for (let input of inputs) {
+                    input.value = '';
+                }
+                const quantityInputs = newRow.getElementsByTagName('input');
+                for (let input of quantityInputs) {
+                    if (input.type === 'number') {
+                        input.value = '100';
+                    }
+                }
+                lastRow.parentNode.appendChild(newRow);
+                updateFormIndexes();
+
+                const removeBtn = newRow.querySelector('.remove-row');
+                removeBtn.addEventListener('click', function () {
+                    newRow.remove();
+                    updateFormIndexes();
+                });
+            }
+        });
+
+        const removeButtons = document.querySelectorAll('.remove-row');
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const row = this.closest('.order-item-row');
+                row.remove();
+                updateFormIndexes();
+            });
+        });
+    });
+</script>
+{% endblock %}

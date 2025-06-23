@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная - Фабрика игрушек{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="jumbotron">
+                <h1>Добро пожаловать на фабрику игрушек!</h1>
+                <p class="lead">Мы производим качественные игрушки для оптовых покупателей.</p>
+                <hr class="my-4">
+                <p>Узнайте больше о нашей продукции и услугах.</p>
+                <a class="btn btn-primary btn-lg" href="{% url 'catalog:product_list' %}">Перейти в каталог</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {% if last_news %}
+        <div class="col-12 mb-4">
+            <div class="card h-100">
+                {% if last_news.image %}
+                <img src="{{ last_news.image.url }}" class="card-img-top" alt="{{ last_news.title }}"
+                    style="height: 500px; width: 900px">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ last_news.title }}</h5>
+                    <p class="card-text">{{ last_news.summary|truncatewords:20 }}</p>
+                    <a href="{% url 'home:news_detail' last_news.pk %}" class="btn btn-primary">Читать далее</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">Новостей пока нет.</div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

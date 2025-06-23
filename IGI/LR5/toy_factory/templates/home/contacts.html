@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<style>
+    .contact-image {
+        max-width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="container mt-4">
+    <h1>Контакты</h1>
+
+    <div class="row mt-4">
+        {% for contact in contacts %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if contact.photo %}
+                <img src="{{ contact.photo.url }}" class="card-img-top contact-image" alt="{{ contact.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ contact.name }}</h5>
+                    <p class="card-text">
+                        <strong>Должность:</strong> {{ contact.position }}
+                    </p>
+                    {% if contact.phone %}
+                    <p class="card-text">
+                        <strong>Телефон:</strong> {{ contact.phone }}
+                    </p>
+                    {% endif %}
+                    {% if contact.email %}
+                    <p class="card-text">
+                        <strong>Email:</strong> {{ contact.email }}
+                    </p>
+                    {% endif %}
+                    {% if contact.description %}
+                    <p class="card-text">{{ contact.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                Контактная информация отсутствует.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

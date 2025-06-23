@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Пункты самовывоза{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Пункты самовывоза</h2>
+
+    <div class="row">
+        <!-- Список точек -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Список пунктов самовывоза</h5>
+                </div>
+                <div class="card-body">
+                    {% for point in pickup_points %}
+                    <div class="pickup-point mb-3 d-flex align-items-center">
+                        {% if point.image %}
+                        <img src="{{ point.image.url }}" alt="Фото {{ point.name }}" class="img-thumbnail mr-3"
+                            style="max-width: 400px; max-height: 400px;">
+                        {% endif %}
+                        <div>
+                            <h6 class="mb-1">{{ point.name }}</h6>
+                            <p class="mb-1"><strong>Адрес:</strong> {{ point.address }}</p>
+                            <p class="mb-1"><strong>Время работы:</strong> {{ point.working_hours }}</p>
+                            <p class="mb-0"><strong>Телефон:</strong> {{ point.phone }}</p>
+                        </div>
+                    </div>
+                    {% if not forloop.last %}
+                    <hr>
+                    {% endif %}
+                    {% empty %}
+                    <p class="text-muted">Пункты самовывоза не найдены</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

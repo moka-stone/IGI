@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Мои заказы{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Мои заказы</h2>
+
+    {% for order in orders %}
+    <div>
+        <div>
+            <div>
+                <div>
+                    Заказ #{{ order.id }}
+                </div>
+                <div>
+                    {{ order.order_date|date:"d.m.Y" }}
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div>
+                    <h5>Товары:</h5>
+                    <ul>
+                        {% for item in order.items.all %}
+                        <li>
+                            {{ item.product.name }} x {{ item.quantity }} =
+                            {{ item.get_total }} руб.
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <p><strong>Статус:</strong> {{ order.get_status_display }}</p>
+                    <p><strong>Итого:</strong> {{ order.total_amount }} руб.</p>
+                    <a href="{% url 'catalog:order_detail' order.id %}">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div>
+        У вас пока нет заказов
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

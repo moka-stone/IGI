@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Ежемесячные продажи{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Ежемесячные продажи</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Месяц</th>
+                            <th>Количество заказов</th>
+                            <th>Общая сумма</th>
+                            <th>Средний чек</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for data in sales_data %}
+                        <tr>
+                            <td>{{ data.month|date:"F Y" }}</td>
+                            <td>{{ data.orders_count }}</td>
+                            <td>{{ data.total_sales|floatformat:2 }} руб.</td>
+                            <td>{{ data.total_sales|div:data.orders_count|floatformat:2 }} руб.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

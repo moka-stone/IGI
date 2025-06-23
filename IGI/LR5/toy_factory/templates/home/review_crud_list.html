@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}CRUD Отзывов{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Добавить отзыв</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+    </form>
+    <hr>
+    {% if reviews.count > 0 %}
+    <h2>Список отзывов</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Пользователь</th>
+                <th>Текст</th>
+                <th>Оценка</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ review.id }}</td>
+                <td>{{ review.user.username }}</td>
+                <td>{{ review.text }}</td>
+                <td>{{ review.rating }}</td>
+                <td>
+                    <a href="{% url 'home:review_crud_edit' review.id %}">Изменить</a> |
+                    <a href="{% url 'home:review_crud_delete' review.id %}">Удалить</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+{% endblock %}

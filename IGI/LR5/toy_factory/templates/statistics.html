@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Статистика продаж{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Статистика продаж</h1>
+    <p class="text-muted">Ваша тайм-зона: {{ user_timezone }}</p>
+    {% if user.is_authenticated and user.is_superuser %}
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    Заказчики по городам
+                </div>
+                <div class="card-body" style="max-height: 350px; overflow-y: auto;">
+                    {% regroup clients_by_city by city as city_list %}
+                    <ul class="list-group list-group-flush">
+                        {% for city in city_list %}
+                        <li class="list-group-item">
+                            <strong>{{ city.grouper }}:</strong>
+                            <ul class="mb-0">
+                                {% for client in city.list %}
+                                <li>{{ client.company_name }}</li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item">Нет данных</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    Самая популярная игрушка
+                </div>
+                <div class="card-body">
+                    <p><strong>{{ most_popular.name|default:'Нет данных' }}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    Наименее популярная игрушка
+                </div>
+                <div class="card-body">
+                    <p><strong>{{ least_popular.name|default:'Нет данных' }}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    Ежемесячный объем продаж
+                </div>
+                <img src="{{ chart_images.monthly_sales }}" class="card-img-top">
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    Годовой отчет поступлений
+                </div>
+                <img src="{{ chart_images.yearly_income }}" class="card-img-top">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    Тренд продаж (по месяцам)
+                </div>
+                {% if sales_trend and sales_trend|length > 0 %}
+                <div class="table-responsive">
+                    <table class="table table-sm mb-0">
+                        <thead>
+                            <tr>
+                                <th>Месяц</th>
+                                <th>Сумма продаж</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for month, total in sales_trend %}
+                            <tr>
+                                <td>{{ month|date:'Y-m' }}</td>
+                                <td>{{ total|default:0 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <div class="p-3">Нет данных для отображения тренда продаж.</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="alert alert-primary mt-4" role="alert">
+        Доступ к статистике ограничен.
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

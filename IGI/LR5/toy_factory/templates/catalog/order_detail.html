@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Заказ №{{ order.id }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="mb-3">
+        <a href="{% url 'catalog:order_list' %}" class="btn btn-secondary">
+            &larr; Назад к списку заказов
+        </a>
+    </div>
+
+    <h2>Заказ №{{ order.id }}</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Информация о заказе</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Компания</dt>
+                <dd class="col-sm-9">{{ order.client.company_name }}</dd>
+                <dt class="col-sm-3">Продукция</dt>
+                <dd class="col-sm-9">{{ order.product.name }}</dd>
+                <dt class="col-sm-3">Количество</dt>
+                <dd class="col-sm-9">{{ order.quantity }}</dd>
+                <dt class="col-sm-3">Месяц заказа</dt>
+                <dd class="col-sm-9">{{ order.month|date:'F Y' }}</dd>
+                <dt class="col-sm-3">Дата заказа</dt>
+                <dd class="col-sm-9">{{ order.order_date }}</dd>
+                <dt class="col-sm-3">Дата выполнения</dt>
+                <dd class="col-sm-9">{{ order.completion_date|default:'—' }}</dd>
+                <dt class="col-sm-3">Статус</dt>
+                <dd class="col-sm-9">{{ order.get_status_display }}</dd>
+                <dt class="col-sm-3">Сумма</dt>
+                <dd class="col-sm-9">{{ order.total_amount }} руб.</dd>
+            </dl>
+        </div>
+    </div>
+
+    {% if user.employee and order.status == 'new' %}
+    <div class="mt-4">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success" name="mark_as_sold">
+                Отметить как проданный
+            </button>
+        </form>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

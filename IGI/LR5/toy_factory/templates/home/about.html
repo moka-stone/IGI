@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}О компании{% endblock %}
+
+{% block content %}
+<div>
+    <div>
+        <div>
+            <h1>О компании</h1>
+            {% if about %}
+            <div>
+                {{ about.text|linebreaks }}
+            </div>
+            {% else %}
+            <div>
+                Информация о компании скоро появится.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

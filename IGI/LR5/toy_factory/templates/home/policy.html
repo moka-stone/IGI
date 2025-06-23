@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Политика конфиденциальности{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <img src="" class="img-fluid rounded" id="dogImage" style="max-height: 500px;">
+</div>
+
+<script>
+    function loadRandomDog() {
+        fetch('https://dog.ceo/api/breeds/image/random')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('dogImage').src = data.message;
+            })
+            .catch(error => console.error('Error loading dog image:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', loadRandomDog);
+</script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Промокоды{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Действующие промокоды</h1>
+
+    <div class="row">
+        {% for promocode in promocodes %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Скидка {{ promocode.discount }}%</h5>
+                    <p class="card-text">
+                        <strong>Код:</strong> {{ promocode.code }}
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Действует до {{ promocode.valid_to|date:"d.m.Y" }}
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                В настоящее время активных промокодов нет.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
