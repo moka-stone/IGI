@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Популярность товаров{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Анализ популярности товаров</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Наименование</th>
+                            <th>Количество продаж</th>
+                            <th>Общая выручка</th>
+                            <th>Средний чек</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in popular_products %}
+                        <tr>
+                            <td>{{ product.product__name }}</td>
+                            <td>{{ product.total_ordered }}</td>
+                            <td>{{ product.total_revenue|floatformat:2 }} руб.</td>
+                            <td>{{ product.total_revenue|div:product.total_ordered|floatformat:2 }} руб.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

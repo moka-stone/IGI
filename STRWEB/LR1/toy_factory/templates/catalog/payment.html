@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Оплата заказа №{{ order.id }}{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Оплата заказа №{{ order.id }}</h2>
+    <p>Сумма к оплате: {{ order.total_amount }} руб.</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Подтвердить оплату</button>
+    </form>
+</div>
+{% endblock %}

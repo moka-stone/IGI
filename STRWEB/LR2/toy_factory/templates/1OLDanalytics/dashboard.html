@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Панель аналитики{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Панель аналитики</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Всего товаров</h5>
+                    <p class="h2">{{ total_products }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Клиентов</h5>
+                    <p class="h2">{{ total_customers }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Заказов</h5>
+                    <p class="h2">{{ total_orders }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Общая выручка</h5>
+                    <p class="h2">{{ total_revenue|floatformat:2 }} руб.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Быстрые ссылки</h5>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'analytics:price_list' %}" class="btn btn-primary me-2">Прайс-лист</a>
+                    <a href="{% url 'analytics:customers_by_city' %}" class="btn btn-primary me-2">Клиенты по городам</a>
+                    <a href="{% url 'analytics:product_popularity' %}" class="btn btn-primary me-2">Популярность товаров</a>
+                    <a href="{% url 'analytics:monthly_sales' %}" class="btn btn-primary">Продажи по месяцам</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
