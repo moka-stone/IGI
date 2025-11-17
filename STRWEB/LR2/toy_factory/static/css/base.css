@@ -1,0 +1,44 @@
+.header-div{
+    background-color: rgb(62, 59, 79);
+    margin: 0px;
+    padding: 15px;
+}
+.footer-div{
+    background-color:  rgb(62, 59, 79);
+    margin:0px;
+}
+img[alt^="Логотип"] {
+    border-radius: 100px;
+}
+h1[title="Главное название"] {
+    color:rgb(176, 119, 180); 
+    margin-left: 20px; 
+    margin-top: 30px;
+}
+nav[title$="base"]
+{
+    background-color:inherit;
+}
+.nav-list {
+    background-color:  rgb(174, 141, 192);
+    border: 0px solid black;
+    border-radius: 40px;
+    list-style: none;
+    flex-wrap: wrap;
+    display:inline-flex;
+    padding: 0px;
+}
+.nav-list li {
+    border: 0px solid black;
+    background-color:  rgb(62, 59, 79);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 12px;      
+}
+.nav-list li a {
+        text-decoration: none; /* Убираем подчеркивание у ссылок */
+        color: rgb(176, 119, 180); ;
+    }
+.nav-list li a:hover {
+        text-decoration: underline; /* Подчеркивание при наведении */
+    }
