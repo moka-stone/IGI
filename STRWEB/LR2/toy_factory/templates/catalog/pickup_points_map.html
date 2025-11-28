@@ -3,7 +3,8 @@
 {% block title %}Пункты самовывоза{% endblock %}
 
 {% block content %}
-<div>
+<link rel="stylesheet" href="/static/css/pickup_points.css">
+<div class="main-content">
     <h2>Пункты самовывоза</h2>
 
     <div>
@@ -11,11 +12,11 @@
         <div>
             <h3>Список пунктов самовывоза</h3>
             {% for point in pickup_points %}
-            <div>
+            <div class="pickup-point">
                 {% if point.image %}
-                <img width = "350px" src="{{ point.image.url }}" alt="Фото {{ point.name }}">
+                <img src="{{ point.image.url }}" alt="Фото {{ point.name }}">
                 {% endif %}
-                <div>
+                <div class="pickup-info">
                     <h4>{{ point.name }}</h4>
                     <p><strong>Адрес:</strong> {{ point.address }}</p>
                     <p><strong>Время работы:</strong> {{ point.working_hours }}</p>

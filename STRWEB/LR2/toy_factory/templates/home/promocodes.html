@@ -3,38 +3,31 @@
 {% block title %}Промокоды{% endblock %}
 
 {% block content %}
-<h1>Действующие промокоды</h1>
-<div title="promocodes">
-    {% for promocode in promocodes %}
-    <div title="promocode" >
-        <h3>Скидка {{ promocode.discount }}%</h3>
-        <p><strong>Код:</strong> {{ promocode.code }}</p>
-        <p><small>Действует до {{ promocode.valid_to|date:"d.m.Y" }}</small></p>
+<link rel="stylesheet" href="/static/css/promocodes.css">
+<div class="promocodes-page">
+    <h1>Действующие промокоды</h1>
+    
+    <div class="active-promocodes">
+        {% for promocode in promocodes %}
+        <div class="promocode-card">
+            <h3>Скидка {{ promocode.discount }}%</h3>
+            <div class="promocode-code">{{ promocode.code }}</div>
+            <p class="promocode-date">Действует до {{ promocode.valid_to|date:"d.m.Y" }}</p>
+        </div>
+        {% endfor %}
     </div>
-    <hr>
 
-    {% empty %}
-    <div>
-    В настоящее время активных промокодов нет.
-    </div>
-    {% endfor %}
+    <details>
+        <summary>Архив неактивных промокодов</summary>
+        <div class="inactive-promocodes">
+            {% for promocode in inactive_promocodes %}
+            <div class="inactive-promocode">
+                <h3>Скидка {{ promocode.discount }}%</h3>
+                <div class="inactive-code">{{ promocode.code }}</div>
+                <p class="expired-date">Истек {{ promocode.valid_to|date:"d.m.Y" }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </details>
 </div>
-
-<details>
-<summary><h1>Архив неактивных промокодов</h1></summary>
-<div title="inactive-promocodes">
-    {% for promocode in inactive_promocodes %}
-    <div title="promocode">
-        <h3>Скидка {{ promocode.discount }}%</h3>
-        <p><strong>Код:</strong> {{ promocode.code }}</p>
-        <p><small>Истек {{ promocode.valid_to|date:"d.m.Y" }}</small></p>
-    </div>
-    <hr>
-    {% empty %}
-    <div>
-        В архиве нет неактивных промокодов.
-    </div>
-    {% endfor %}
-</div>
-</details>
 {% endblock %}

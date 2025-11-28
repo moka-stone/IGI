@@ -1,0 +1,90 @@
+/* Страница FAQ */
+.faq-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.faq-page h1 {
+    color: #5d4e7b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.faq-list {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для аккордеона */
+details {
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+details:hover {
+    border-color: #bbcada;
+}
+
+details[open] {
+    border-color: #9f4d86;
+    box-shadow: 0 2px 8px rgba(159, 77, 134, 0.1);
+}
+
+summary {
+    padding: 20px;
+    background: #f8f9fa;
+    cursor: pointer;
+    font-weight: 500;
+    color: #5d4e7b;
+    list-style: none;
+    transition: background 0.3s ease;
+}
+
+summary:hover {
+    background: #e9ecef;
+}
+
+/* Убираем стандартный маркер */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Кастомный маркер */
+summary::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    color: #9f4d86;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+/* Контент ответа */
+details div {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+}
+
+.faq-date {
+    display: block;
+    margin-top: 15px;
+    color: #999;
+    font-size: 0.9em;
+    text-align: right;
+}
+
+/* Убираем последний разделитель */
+.faq-list hr:last-child {
+    display: none;
+}

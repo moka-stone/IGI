@@ -3,26 +3,36 @@
 {% block title %}Вакансии{% endblock %}
 
 {% block content %}
-<h1>Вакансии</h1>
+<link rel="stylesheet" href="/static/css/vacancies.css">
+<div class="vacancies-page">
+    <h1>Вакансии</h1>
 
-<div>
-    {% for vacancy in vacancies %}
-    <div>
-        <h2>{{ vacancy.title }}</h2>
-        {% if vacancy.salary_from or vacancy.salary_to %}
-        <p>
-            <strong>Зарплата: от {{ vacancy.salary_from }} до {{ vacancy.salary_to }} руб.</strong>
-        </p>
-        {% endif %}
-        <strong> Описание:</strong>
-        <p>{{ vacancy.description|linebreaks }}</p>
-        <strong>Требования:</strong>
-        <p>{{ vacancy.requirements|linebreaks }}</p>
+    <div class="vacancies-list">
+        {% for vacancy in vacancies %}
+        <!-- ТРЕБОВАНИЕ: плавающие блоки -->
+        <div class="vacancy-card">
+            <h2>{{ vacancy.title }}</h2>
+            
+            {% if vacancy.salary_from or vacancy.salary_to %}
+            <div class="salary">
+                Зарплата: от {{ vacancy.salary_from }} до {{ vacancy.salary_to }} руб.
+            </div>
+            {% endif %}
+            
+            <div class="vacancy-section">
+                <strong>Описание:</strong>
+                <p>{{ vacancy.description|linebreaks }}</p>
+            </div>
+            
+            <div class="vacancy-section">
+                <strong>Требования:</strong>
+                <p>{{ vacancy.requirements|linebreaks }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <!-- ТРЕБОВАНИЕ: clear для последней строки -->
+        <div style="clear: both;"></div>
     </div>
-    {% empty %}
-    <div>
-        В настоящее время вакансий нет.
-    </div>
-    {% endfor %}
 </div>
 {% endblock %}

@@ -3,22 +3,21 @@
 {% block title %}{{ news.title }}{% endblock %}
 
 {% block content %}
-
-<div>
-    <article>
+<link rel="stylesheet" href="/static/css/news_detail.css">
+<div class="news-detail">
+    <article class="news-article">
         <h1>{{ news.title }}</h1>
-        <p>
-            <small>Опубликовано: {{ news.created_at|date:"d.m.Y" }}</small>
-        </p>
+        <small class="news-date">Опубликовано: {{ news.created_at|date:"d.m.Y" }}</small>
 
         {% if news.image %}
         <div>
-            <img src="{{ news.image.url }}" alt="{{ news.title }}">
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-image">
         </div>
         {% endif %}
 
-        <div>
-            {{ news.content|linebreaks }}
+        <!-- ТРЕБОВАНИЕ: многоколоночный макет -->
+        <div class="news-content">
+            {{ news.content }}
         </div>
     </article>
 </div>

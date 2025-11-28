@@ -6,17 +6,19 @@
 {% endblock %}
 
 {% block content %}
-<div>
+<link rel="stylesheet" href="/static/css/product_list.css">
+<div class="catalog-page">
     <h1>Каталог</h1>
-    <div style="padding: 5px">
+    
+    <div class="filters-section">
         <h3>Фильтры</h3>
-        <form method="get" action="{% url 'catalog:product_list' %}">
-            <div>
+        <form method="get" action="{% url 'catalog:product_list' %}" class="filter-form">
+            <div class="filter-group">
                 <label for="search">Поиск</label>
-                <input type="text" id="search" name="q" value="{{ search_query }}">
+                <input type="text" id="search" name="q" value="{{ search_query }}" placeholder="Название товара">
             </div>
 
-            <div>
+            <div class="filter-group">
                 <label for="category">Категория</label>
                 <select id="category" name="category">
                     <option value="">Все категории</option>
@@ -26,15 +28,15 @@
                 </select>
             </div>
 
-            <div>
+            <div class="filter-group">
                 <label>Цена</label>
-                <div>
+                <div style="display: flex; gap: 10px;">
                     <input type="number" name="min_price" placeholder="От" value="{{ min_price }}">
                     <input type="number" name="max_price" placeholder="До" value="{{ max_price }}">
                 </div>
             </div>
 
-            <div>
+            <div class="filter-group">
                 <label for="sort">Сортировка</label>
                 <select id="sort" name="sort">
                     <option value="price_desc" {% if 'price_desc' in current_sort %}selected{% endif %}>Сначала дорогие</option>
@@ -44,34 +46,35 @@
                 </select>
             </div>
 
-            <button type="submit">Применить</button>
+            <button type="submit" class="filter-button">Применить</button>
         </form>
     </div>
 
     {% if search_query %}
-    <h4>Результаты поиска: {{ search_query }}</h4>
+    <h4 class="search-results">Результаты поиска: "{{ search_query }}"</h4>
     {% endif %}
 
-    {% if not object_list %}
-    <div>
-        Товары не найдены
-    </div>
-    {% else %}
-    <div>
-        {% for product in object_list %}
-        <div style="border: 1px solid; margin:5px; padding:10px ">
-            <a href="{% url 'catalog:product_detail' product.id %}">
-                <img width="300" src="{{ product.image.url }}" alt="{{ product.name }} image"> 
-            </a>                    
-            <h4>{{ product.name }}</h4>
-            <p>{{ product.category.name }}</p>
-            <p>{{ product.description|truncatewords:20 }}</p>
-            <p><small>Код: {{ product.product_code }}</small></p>
-            <p><strong>Цена: {{ product.price }} руб</strong></p>
-            <a href="{% url 'catalog:product_detail' product.id %}">Подробнее</a>
+    <!-- ТРЕБОВАНИЕ: CSS Grid Layout -->
+    <div class="products-grid">
+        {% if not object_list %}
+        <div class="no-products">
+            Товары не найдены
         </div>
-        {% endfor %}
+        {% else %}
+            {% for product in object_list %}
+            <div class="product-card">
+                <a href="{% url 'catalog:product_detail' product.id %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                </a>
+                <h4>{{ product.name }}</h4>
+                <p class="product-category">{{ product.category.name }}</p>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-code">Код: {{ product.product_code }}</p>
+                <p class="product-price">{{ product.price }} руб</p>
+                <a href="{% url 'catalog:product_detail' product.id %}" class="details-link">Подробнее</a>
+            </div>
+            {% endfor %}
+        {% endif %}
     </div>
-    {% endif %}
 </div>
 {% endblock %}

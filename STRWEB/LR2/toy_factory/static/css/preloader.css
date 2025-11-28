@@ -1,0 +1,65 @@
+.preloader-section{
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 30px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display:flex;
+    justify-content: center;
+}
+.preloader{
+    width:140px;
+    height:140px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    z-index: 1;
+    position: relative;
+    animation-name: preload;
+    animation-duration: 2s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.cube{
+    background-color: white;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    position: absolute; 
+    top: 45px; 
+    left: 45px; 
+}
+.line{
+    background-color: white;
+    width:140px;
+    height:20px;
+    z-index: 3;
+    position: absolute; 
+    top: 60px; 
+}
+
+@keyframes preload{
+    0% {
+        transform: rotate(80deg) scaley(1);
+    }
+    25%{
+        transform: rotate(110deg) scaley(0.7);
+    }
+    50% {
+        transform: rotate(70deg) scaleY(-1);
+        animation-timing-function: ease;
+    }
+    66%{
+        transform: rotate(70deg) scaleY(-0.8);
+    }
+    75%{
+        transform: rotate(100deg) scaleY(0.7);
+    }
+    85%{
+        transform: rotate(100deg) scaley(-0.7);
+    }
+    100% {
+        transform: rotate(80deg) scaleY(1);
+    }
+}

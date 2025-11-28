@@ -3,11 +3,12 @@
 {% block title %}Заказы{% endblock %}
 
 {% block content %}
-<div>
-    <h2>Заказы</h2>
+<link rel="stylesheet" href="/static/css/order_list.css">
+<div class="main-content">
+    <h1>Заказы</h1>
 
     {% if user.client %}
-    <div>
+    <div class="create_new">
         <a href="{% url 'catalog:create_order' %}">
             Создать новый заказ
         </a>
@@ -15,11 +16,12 @@
     {% endif %}
 
     {% if orders %}
-    <div>
+    <div class="orders-table">
         <table>
+            <caption class="table-caption">Список всех заказов</caption>
             <thead>
                 <tr>
-                    <th>id заказа</th>
+                    <th>id ssзаказа</th>
                     {% if user.employee %}
                     <th>Компания</th>
                     {% endif %}
@@ -30,7 +32,7 @@
                     <th>Дата выполнения</th>
                     <th>Статус</th>
                     <th>Сумма</th>
-                    <th>Просмотреть детали</th>
+                    <th>Действия</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,7 +50,7 @@
                     <td>{{ order.get_status_display }}</td>
                     <td>{{ order.total_amount }} руб.</td>
                     <td>
-                        <a href="{% url 'catalog:order_detail' order_id=order.id %}">
+                        <a href="{% url 'catalog:order_detail' order_id=order.id %}" class="table-link">
                             Подробнее
                         </a>
                     </td>
@@ -58,7 +60,7 @@
         </table>
     </div>
     {% else %}
-    <div>
+    <div class="no-orders">
         У вас пока нет заказов.
     </div>
     {% endif %}

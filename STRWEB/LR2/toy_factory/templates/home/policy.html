@@ -3,14 +3,23 @@
 {% block title %}Политика конфиденциальности{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="/static/css/policy.css">
+<div class="main-content">
 
 
-
-
-
-
-
-
+<div class="article">
+    <p id="lala">Это первый абзац статьи с выделенной первой буквой.</p>
+    <p class="quote">Важная цитата в тексте</p>
+    <ul class="unicode-list">
+        <li>Первый пункт с юникод-маркером</li>
+        <li>Второй пункт</li>
+        <li>Третий пункт</li>
+    </ul>
+    <p>Цитата на французском языке: <q lang="fr">Ce que femme veut, Dieu le veut</q>.</p>  
+    <p>Цитата на немецком: <q lang="de">Der Mensch, versuche die Gotter nicht</q>.</p>  
+    <p>Цитата на английском: <q lang="en">То be or not to be</q>.</p>
+    <a href="" style="cursor: help;">Тестовая ссылка</a>
+</div>
 <div>
     <img src="" id="dogImage" style="max-height: 500px;">
 </div>
@@ -26,4 +35,5 @@
 
     document.addEventListener('DOMContentLoaded', loadRandomDog);
 </script>
+</div>
 {% endblock %}

@@ -3,131 +3,137 @@
 {% block title %}О компании{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="/static/css/about.css">
+<div class="main-content">
 
-<div>
-    <section aria-labelledby="about-text">
-        <h1 id="about-text">О нашей компании</h1>
-        <p>{{ about.text }}</p>
-        
-        <h2>Отзывы наших клиентов</h2>
-        
-        <blockquote>
-            <p>Работа с <abbr title="Mokas Toy Factory">MTF</abbr> превзошла все наши ожидания. Профессионализм, высокое качество продукции и внимание к деталям — вот что отличает эту компанию от других.</p>
-            <footer>— <cite>FUNtastik, магазин игрушек</cite></footer>
-        </blockquote>
-        
-        <p>Как говорит наш постоянный партнер: 
-        <q>Игрушки — это не просто товары, это радость и мечты, которые мы создаем для детей</q></p>
-        
-        <h3>Наш девиз</h3>
-<pre>Игрушки — это не просто товары,
-Игрушки — это радость и мечты.
-Мы создаем для вас волшебство,
-Где детство оживает навсегда.</pre>
+    <div>
+        <section aria-labelledby="about-text">
+            <h1 id="about-text">О нашей компании</h1>
+            <p>{{ about.text }}</p>
+            
+            <h2>Отзывы наших клиентов</h2>
+            
+            <blockquote>
+                <p>Работа с <abbr title="Mokas Toy Factory">MTF</abbr> превзошла все наши ожидания. Профессионализм, высокое качество продукции и внимание к деталям — вот что отличает эту компанию от других.</p>
+                — <cite>FUNtastik, магазин игрушек</cite>
+            </blockquote>
+            
+            <p>Как говорит наш постоянный партнер: 
+            <q>Игрушки — это не просто товары, это радость и мечты, которые мы создаем для детей</q></p>
+            
+            <h3>Наш девиз</h3>
+    <pre>Игрушки — это не просто товары,
+    Игрушки — это радость и мечты.
+    Мы создаем для вас волшебство,
+    Где детство оживает навсегда.</pre>
 
-        <p>Как мы говорим: "Игрушки — это не просто то<wbr>вары,<br>
-        Игрушки — это радость и мечты.<br>
-        Мы создаем для вас волшебство,<br>
-        Где детство оживает навсегда."</p>
-    </section>
-
-    {% if video_file %}
-    <section aria-labelledby="about-video">
-        <h2 id="about-video">Видео</h2>
-        <video width="560" height="315" controls>
-            <source src="{{ video_file.url }}" type="video/mp4">
-            <source src="{{ video_file.url }}" type="video/webm">
-            <source src="{{ video_file.url }}" type="video/ogg">
-            Ваш браузер не поддерживает видео тег.
-        </video>
-    </section>
-    {% elif video_embed_url %}
-    <section aria-labelledby="about-video">
-        <h2 id="about-video">Видео</h2>
-        <iframe src="{{ video_embed_url }}" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Видео о компании"></iframe>
-    </section>
-    {% endif %}
-
-    <section aria-labelledby="about-audio">
-        <h2 id="about-audio">Аудио информация</h2>
-        <p>Прослушайте краткую информацию о нашей компании:</p>
-        {% if video_file %}
-        <audio controls>
-            <source src="{{ video_file.url }}" type="audio/mpeg">
-            <source src="{{ video_file.url }}" type="audio/ogg">
-            <source src="{{ video_file.url }}" type="audio/wav">
-            Ваш браузер не поддерживает аудио тег.
-        </audio>
-        {% else %}
-        <audio controls>
-            <source src="/media/videos/video" type="audio/mpeg">
-            <source src="/media/videos/video" type="audio/ogg">
-            <source src="/media/videos/video" type="audio/wav">
-            Ваш браузер не поддерживает аудио тег.
-        </audio>
-        {% endif %}
-        <p><small>Если у вас есть проблемы со слухом, вы можете найти всю информацию в текстовом виде выше.</small></p>
-    </section>
-
-    {% if milestones %}
-    <section aria-labelledby="history">
-        <h2 id="history">История по годам</h2>
-        <ul>
-            {% for m in milestones %}
-                <li><time datetime="{{ m.year }}">{{ m.year }}</time> — <strong>{{ m.title }}</strong>: {{ m.description }}</li>
-            {% endfor %}
-        </ul>
-    </section>
-    {% endif %}
-
-    {% if requisites %}
-    <section aria-labelledby="reqs">
-        <h2 id="reqs">Реквизиты</h2>
-        <pre>{{ requisites.text }}</pre>
-    </section>
-    {% endif %}
-
-    {% if certificate %}
-    <article>
-        <section aria-labelledby="cert">
-            <h2 id="cert">Сертификат</h2>
-            <pre><strong>{{ certificate.text }}</strong></pre>
+            <p>Как мы говорим: "Игрушки — это не просто то<wbr>вары,<br>
+            Игрушки — это радость и мечты.<br>
+            Мы создаем для вас волшебство,<br>
+            Где детство оживает навсегда."</p>
         </section>
-    </article>
-    {% endif %}
-    
-    <h3>Листинг</h3>
-    <figure>
-        <figcaption>Listing 23. Using the code element</figcaption>
-        <code>
-            var fruits = ["apples", "oranges", "mangoes", "cherries"];<br>
-            document.writeln("I like " + fruits.length + " fruits");
-        </code>
-    </figure>
 
-    <p>The variable in this example is <var>fruits</var></p>
-    <p>The output from the code is: <samp>I like 4 fruits</samp></p>
-    <p>When prompted for my favorite fruit, I typed: <kbd>cherries</kbd>
+        {% if video_file %}
+        <section aria-labelledby="about-video">
+            <h2 id="about-video">Видео</h2>
+            <video width="560" height="315" controls>
+                <source src="{{ video_file.url }}" type="video/mp4">
+                <source src="{{ video_file.url }}" type="video/webm">
+                <source src="{{ video_file.url }}" type="video/ogg">
+                Ваш браузер не поддерживает видео тег.
+            </video>
+        </section>
+        {% elif video_embed_url %}
+        <section aria-labelledby="about-video">
+            <h2 id="about-video">Видео</h2>
+            <iframe src="{{ video_embed_url }}" width="560" height="315" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Видео о компании"></iframe>
+        </section>
+        {% endif %}
 
-    <h3>Определение</h3>
-    <dfn title="the pomaceous fruit of the apple tree.">apple</dfn>
-    <time datetime="2025-12-7">December 7th</time>
+        <section aria-labelledby="about-audio">
+            <h2 id="about-audio">Аудио информация</h2>
+            <p>Прослушайте краткую информацию о нашей компании:</p>
+            {% if video_file %}
+            <audio controls>
+                <source src="{{ video_file.url }}" type="audio/mpeg">
+                <source src="{{ video_file.url }}" type="audio/ogg">
+                <source src="{{ video_file.url }}" type="audio/wav">
+                Ваш браузер не поддерживает аудио тег.
+            </audio>
+            {% else %}
+            <audio controls>
+                <source src="/media/videos/video" type="audio/mpeg">
+                <source src="/media/videos/video" type="audio/ogg">
+                <source src="/media/videos/video" type="audio/wav">
+                Ваш браузер не поддерживает аудио тег.
+            </audio>
+            {% endif %}
+            <p><small>Если у вас есть проблемы со слухом, вы можете найти всю информацию в текстовом виде выше.</small></p>
+        </section>
 
-    <h3>Списки</h3>
-    <ul type="square">
-        <li>One</li>
-        <li type="circle">Two</li>
-    </ul>
+        {% if milestones %}
+        <section aria-labelledby="history">
+            <h2 id="history">История по годам</h2>
+            <ul>
+                {% for m in milestones %}
+                    <li><time datetime="{{ m.year }}">{{ m.year }}</time> — <strong>{{ m.title }}</strong>: {{ m.description }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
 
-    <ol type="A" start="10">
-        <li>Son</li>
-        <li value="1">Mother</li>
-        <li>Father</li>
-    </ol>
+        {% if requisites %}
+        <section aria-labelledby="reqs">
+            <h2 id="reqs">Реквизиты</h2>
+            <pre>{{ requisites.text }}</pre>
+        </section>
+        {% endif %}
 
-
-
-
-
+        {% if certificate %}
+        <div class="certificate">
+            <div class="certificate-border">
+                <div class="certificate-content">
+                    <div class="certificate-header">
+                        <h1>СЕРТИФИКАТ О ЧЛЕНСТВЕ В АССОЦИАЦИИ</h1>
+                        <h2>ФАБРИКА ИГРУШЕК</h2>
+                    </div>
+                    
+                    <div class="certificate-body">
+                        <div class="certificate-title">
+                            <h3>ЕДИНЫЙ РЕЕСТР ПРОИЗВОДИТЕЛЕЙ</h3>
+                            <h4>СВИДЕТЕЛЬСТВО<br>о внесении сведений</h4>
+                        </div>
+                        
+                        <div class="certificate-company">
+                            <p>Общество с ограниченной ответственностью «Mokas Toy Factory»</p>
+                            <p>(ИНН 7731340252)</p>
+                            <p class="registry-number">Реестровый номер: 8241</p>
+                        </div>
+                        
+                        <div class="certificate-signature">
+                            <div class="signature-line"></div>
+                            <p>Иванов И.И.<br>Директор Ассоциации "ФАБРИКА ИГРУШЕК"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate-footer">
+                        <p>Ассоциация "Объединение производителей игрушек "ФАБРИКА ИГРУШЕК"</p>
+                        <p>101000 г. Минск, ул. БГУИР, дом 4</p>
+                        <p>тел.: +7 (499) 678-90-12</p>
+                        <p>e-mail: office@toyfactory.ru</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="text-sample">
+        <h2>Искусство типографики в веб-дизайне</h2>
+        <p><span class="caps">Типографика</span> — это фундаментальный аспект веб-дизайна, оказывающий непосредственное влияние на восприятие контента пользователями. Правильно оформленный текст не только улучшает читаемость, но и создает определенную атмосферу, передает эмоции и укрепляет бренд.</p>
+        
+        <p>Современные <span class="caps">css-технологии</span> предоставляют богатые возможности для тонкой настройки текстового оформления. Межстрочный интервал, отступы, интервалы между символами и словами — все эти параметры работают вместе, создавая гармоничную композицию.</p>
+        
+        <p class="no-indent">Качественная типографика делает контент привлекательным и легко воспринимаемым, что особенно важно в условиях ограниченного внимания современного пользователя.</p>
+        </div>
+    </div>
 </div>
 {% endblock %}

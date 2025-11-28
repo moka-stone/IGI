@@ -3,40 +3,96 @@
 {% block title %}Главная - Фабрика игрушек{% endblock %}
 
 {% block content %}
-<div>
-    <h1>Добро пожаловать на фабрику игрушек!</h1>
-    <p><strong>Мы производим качественные игрушки для оптовых покупателей.</strong></p>
-    <hr>
-    <p>Узнайте больше о нашей продукции</p>
-    <a tabindex="-1"  href="{% url 'catalog:product_list' %}">Перейти в каталог</a>
-</div>
-<div style="display: flex; gap: 10px;">
-    <img src="../../media/ads/banner1.jpg" alt="banner1" style="width: 150px;display: block;">
-    <img src="../../media/ads/banner2.jpg" alt="banner2" style="width: 150px; display: block;">
-    <img src="../../media/ads/banner3.jpg" alt="banner3" style="width: 150px; display: block;">
-</div>
-{% if last_news %}
-<div>
-    <h2>Последняя новость</h2>
-    <img src="{{ last_news.image.url }}" alt="{{ last_news.title }}">
-    <div>
-        <h3>{{ last_news.title }}</h5>
-        <p>{{ last_news.summary|truncatewords:20 }}</p>
-        <a href="{% url 'home:news_detail' last_news.pk %}">Читать далее</a>
+<link rel="stylesheet" href="/static/css/home.css">
+<link rel="stylesheet" href="/static/css/preloader.css">
+<link rel="stylesheet" href="/static/css/animation.css">
+<div class="main-content">
+    <!-- Приветственная секция -->
+    <section class="welcome-section">
+        <h1>Добро пожаловать на фабрику игрушек!</h1>
+        <p><strong>Мы производим качественные игрушки для оптовых покупателей</strong></p>
+        <p>Узнайте больше о нашей продукции</p>
+        <a href="{% url 'catalog:product_list' %}" class="catalog-link">Перейти в каталог</a>
+    </section>
+
+    <!-- Баннеры -->
+    <div class="banners-section">
+        <img src="../../media/ads/banner1.jpg" alt="banner1" class="banner">
+        <img src="../../media/ads/banner2.jpg" alt="banner2" class="banner">
+        <img src="../../media/ads/banner3.jpg" alt="banner3" class="banner">
     </div>
-</div>
-{% else %}
-<div>
-    Новостей пока нет.
-</div>
-{% endif %}
-<div>
-    <h2>Наши партнёры</h2>
-    {%for partner in partners%}
-    <a href="{{ partner.url }}" target="_blank" rel="noopener">
-        <img src="{{ partner.logo.url }}" alt="{{ partner.name }}" width="100" height="60" style="max-width: 100%; height: auto;">
-    </a>
-    {%endfor%}
+
+    <!-- Новости -->
+    {% if last_news %}
+    <section class="news-section">
+        <h2>Последняя новость</h2>
+        <div class="news-article">
+            <div class="news-image">
+                <img src="{{ last_news.image.url }}" alt="{{ last_news.title }}">
+                <div class="new-badge">НОВОЕ</div>
+            </div>
+            <div class="news-content">
+                <h3>{{ last_news.title }}</h3>
+                <p>{{ last_news.summary|truncatewords:15 }}</p>
+                <a href="{% url 'home:news_detail' last_news.pk %}" class="read-more">Читать далее</a>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+    <section class="preloader-section">
+        <div class="preloader">
+            <div class="cube">
+            </div>
+            <div class="line">
+            </div>
+        </div>
+    </section>
+
+    <section class="news-section">
+        <div class="scene">
+            <div class="bear">
+                <div class="head">
+                    <div class="ears">
+                        <div class="ear left"></div>
+                        <div class="ear right"></div>
+                    </div>
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="nose"></div>
+                    <div class="mouth"></div>
+                </div>
+                <div class="bear-body"></div>
+                <div class="bear-bb"></div>
+                <div class="balloons">
+                    <div class="balloon1"></div>
+                    <div class="balloon2"></div>
+                    <div class="balloon3"></div>
+                </div>
+                
+                <div class="arms">
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                </div>
+            </div>
+            
+            <div class="company-name">Mokas Toy Factory</div>
+        </div>
+    </section>
+
+
+    <!-- Партнеры -->
+    <section class="partners-section">
+        <h2>Наши партнёры</h2>
+        <div class="partners-grid">
+            {% for partner in partners %}
+            <a href="{{ partner.url }}" target="_blank" rel="noopener" class="partner-circle">
+                <img src="{{ partner.logo.url }}" alt="{{ partner.name }}">
+            </a>
+            {% endfor %}
+        </div>
+    </section>
 </div>
 
 

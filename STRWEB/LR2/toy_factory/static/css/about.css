@@ -1,0 +1,269 @@
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #5d4e7b;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.certificate {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Times New Roman', serif;
+}
+
+
+.certificate-border {
+    border: 30px solid white;
+    padding: 50px;
+    background: linear-gradient(135deg, #fdf6e3 0%, #f5e8c8 100%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border-image-source: url('/media/borderimage2.jpg');
+    border-image-slice: 25;
+    border-image-repeat:round;
+    border-image-width: 30px;
+}
+
+.certificate-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Заголовок сертификата */
+.certificate-header h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8b4513;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-header h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8b4513;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #8b4513;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Основное тело сертификата */
+.certificate-body {
+    margin: 30px 0;
+}
+
+.certificate-title h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.certificate-title h4 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #8b4513;
+    margin-bottom: 40px;
+    line-height: 1.4;
+}
+
+.certificate-location {
+    margin-bottom: 40px;
+}
+
+.certificate-location p {
+    font-size: 16px;
+    color: #2c3e50;
+    margin: 5px 0;
+    font-style: italic;
+}
+
+.certificate-company {
+    margin-bottom: 50px;
+}
+
+.certificate-company p {
+    font-size: 18px;
+    color: #2c3e50;
+    margin: 8px 0;
+    line-height: 1.4;
+}
+
+.registry-number {
+    font-weight: bold;
+    font-size: 20px !important;
+    color: #8b4513 !important;
+    margin-top: 15px !important;
+}
+
+/* Подпись */
+.certificate-signature {
+    margin-top: 60px;
+    text-align: right;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+.signature-line {
+    border-bottom: 2px solid #8b4513;
+    width: 200px;
+    margin-bottom: 10px;
+    margin-left: auto;
+}
+
+.certificate-signature p {
+    font-size: 14px;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+
+.certificate-footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #8b4513;
+    font-size: 14px;
+    color: #2c3e50;
+    line-height: 1.4;
+}
+
+.certificate-footer p {
+    margin: 3px 0;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+}
+
+.history-list li {
+    background: #f8f9fa;
+    margin-bottom: 15px;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #9f4d86;
+    transition: transform 0.3s ease;
+}
+
+.history-list li:hover {
+    transform: translateX(10px);
+}
+
+.history-year {
+    font-weight: bold;
+    color: #5d4e7b;
+    font-size: 1.1em;
+}
+
+.history-title {
+    color: #333;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.requisites {
+    font-family: 'Courier New', monospace;
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #34495e;
+    
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+.video-container, .audio-container {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px dashed #bbcada;
+}
+
+video, iframe {
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 3px solid #9f4d86;
+}
+
+audio {
+    width: 100%;
+    max-width: 500px;
+    margin: 15px 0;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.text-sample {
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 600px;
+    
+    font-family: 'Georgia', 'Times New Roman', serif;
+    text-align: justify;
+
+    line-height: 1.8;
+    text-indent: 2em;
+
+    word-spacing: 0.2em;
+    letter-spacing: 0.05em;
+
+    word-wrap: break-word;
+    
+    background: #f8f9fa;
+    border-left: 4px solid #5d4e7b;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);  
+}
+
+.text-sample h2 {
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.1em;
+    
+    font-variant: small-caps;
+    margin-bottom: 25px;
+    color: #5d4e7b;
+}
+
+.text-sample p {
+    font-variant: normal;
+}
+
+.text-sample .caps {
+    font-variant: small-caps;
+    font-weight: bold;
+    color: #5d4e7b;
+}
+
+.text-sample .no-indent {
+    text-indent: 0;
+}

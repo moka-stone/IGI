@@ -3,30 +3,37 @@
 {% block title %}Контакты{% endblock %}
 
 {% block content %}
-<h1>Контакты</h1>
+<link rel="stylesheet" href="/static/css/contacts.css">
+<div class="contacts-page">
+    <h1>Контакты</h1>
 
-<div>
-    {% for contact in contacts %}
-    <div>
-        {% if contact.photo %}
-        <img width="300" src="{{ contact.photo.url }}" alt="{{ contact.name }}">
-        {% endif %}
-        <h2>{{ contact.name }}</h2>
-        <p><strong>Должность:</strong> {{ contact.position }}</p>
-        {% if contact.phone %}
-        <p><strong>Телефон:</strong> {{ contact.phone }}</p>
-        {% endif %}
-        {% if contact.email %}
-        <p><strong>Email:</strong> {{ contact.email }}</p>
-        {% endif %}
-        {% if contact.description %}
-        <p>{{ contact.description }}</p>
-        {% endif %}
+    <div class="contacts-list">
+        {% for contact in contacts %}
+        <!-- ТРЕБОВАНИЕ: Flexbox для размещения -->
+        <div class="contact-card">
+            {% if contact.photo %}
+            <div class="contact-photo">
+                <img src="{{ contact.photo.url }}" alt="{{ contact.name }}">
+            </div>
+            {% endif %}
+            
+            <div class="contact-info">
+                <h2>{{ contact.name }}</h2>
+                <div class="contact-details">
+                    <p><strong>Должность:</strong> {{ contact.position }}</p>
+                    {% if contact.phone %}
+                    <p><strong>Телефон:</strong> {{ contact.phone }}</p>
+                    {% endif %}
+                    {% if contact.email %}
+                    <p><strong>Email:</strong> {{ contact.email }}</p>
+                    {% endif %}
+                    {% if contact.description %}
+                    <p><strong>Описание:</strong> {{ contact.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% empty %}
-    <div>
-        Контактная информация отсутствует.
-    </div>
-    {% endfor %}
 </div>
 {% endblock %}

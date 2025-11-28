@@ -1,0 +1,285 @@
+.scene {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    border-radius: 10%;
+}
+
+.bear {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.bear-body {
+    width: 120px;
+    height: 100px;
+    background: #8B4513;
+    border-radius: 50% 50% 40% 40%;
+    position: relative;
+    z-index: 1; 
+}
+.bear-bb{
+    width: 50px;
+    height:60px;
+    background-color: #ffaf6d;
+    border-radius: 40px;
+    position:absolute;
+    top: 30%;
+    left:30%;
+    z-index: 2;
+}
+
+.head {
+    width: 80px;
+    height: 70px;
+    background: #8B4513;
+    border-radius: 45% 45% 40% 40%;
+    position: absolute;
+    bottom: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6; 
+}
+
+.ears {
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ear {
+    width: 25px;
+    height: 25px;
+    background: #8B4513;
+    border-radius: 50%;
+}
+
+.eyes {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.eye {
+    width: 8px;
+    height: 8px;
+    background: #000;
+    border-radius: 50%;
+}
+
+.nose {
+    background: red;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 30px;
+    left: 45%;
+}
+
+.mouth {
+    width: 12px;
+    height: 6px;
+    border-top: 2px solid black;
+    border-radius: 6px;
+    position: absolute;
+    top: 45px;
+    left: 45%;
+    animation-name: mouthrelease;
+    animation-delay: 4s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+.balloons {
+    position: absolute;
+    bottom: 100px; 
+    left: 40%;
+    transform: translateX(-50%);
+    z-index: 7; 
+}
+
+.balloon1, .balloon2, .balloon3 {
+    width: 30px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    animation-duration: 6s;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+}
+
+.balloon1::after, .balloon2::after, .balloon3::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 30px;
+    background: #fff;
+}
+
+.balloon1 {
+    background: #ff6b6b;
+    left: -20px;
+    animation-name: floatBalloon1;
+    animation-delay: 0.5s;
+    transform: translate(0, 0) rotate(-10deg);
+}
+
+.balloon2 {
+    background: #4ecdc4;
+    left: 0px;
+    animation-name: floatBalloon2;
+    animation-delay: 0.5s;
+}
+
+.balloon3 {
+    background: #ffe66d;
+    left: 20px;
+    animation-name: floatBalloon3;
+    animation-delay: 0.6s;
+    transform: translate(0, 0) rotate(10deg);
+}
+
+.arms {
+    position: absolute;
+    top: 20px;
+    width: 140px;
+    display: flex;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 8; 
+}
+
+.arm {
+    width: 35px;
+    height: 60px;
+    background: #713a13;
+    border-radius: 80px 80px 35px 35px;
+    transform-origin: top center;
+}
+
+.arm.right {
+    transform: rotate(-30deg);
+    animation: releaseRightArm 8s ease-in-out forwards;
+}
+
+.arm.left {
+    transform: rotate(30deg);
+    animation: releaseLeftArm 8s ease-in-out forwards;
+}
+
+.company-name {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    opacity: 0;
+    animation: fadeInText 2s ease-in 4s forwards;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes releaseLeftArm {
+    0% {
+        transform: rotate(-60deg); 
+    }
+    20% {
+        transform: rotate(0deg); 
+    }
+    40% {
+        transform: rotate(60deg);
+    }
+    60% {
+        transform: rotate(-60deg); 
+    }
+    100% {
+        transform: rotate(-60deg); 
+    }
+}
+
+@keyframes releaseRightArm {
+    0% {
+        transform: rotate(60deg); 
+    }
+    20% {
+        transform: rotate(0deg); 
+    }
+    40% {
+        transform: rotate(-60deg);
+    }
+    60% {
+        transform: rotate(60deg); 
+    }
+    100% {
+        transform: rotate(60deg); 
+    }
+}
+
+@keyframes floatBalloon1 {
+    0% {
+        transform: translate(0, 0) rotate(-10deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-40px, -500px) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatBalloon2 {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(10px, -500px) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes floatBalloon3 {
+    0% {
+        transform: translate(0, 0) rotate(10deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(30px, -500px) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        transform: translateX(-50%) translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes mouthrelease {
+    0% {
+        transform: scaley(1);
+    }
+    100% {
+        transform: scaley(-1);
+    }
+}

@@ -3,8 +3,8 @@
 {% block title %}Профиль{% endblock %}
 
 {% block content %}
-
-<div>
+<link rel="stylesheet" href="/static/css/profile.css">
+<div class="main-content">
     <h1>Профиль пользователя</h1>
     <p><strong>Ваша тайм-зона:</strong> {{ user_timezone }}</p>
     <form method="post">
@@ -24,4 +24,5 @@
 
         <button type="submit">Сохранить изменения</button>
     </form>
+</div>
 {% endblock %}

@@ -3,20 +3,24 @@
 {% block title %}FAQ - Часто задаваемые вопросы{% endblock %}
 
 {% block content %}
-<h1>Часто задаваемые вопросы</h1>
+<link rel="stylesheet" href="/static/css/faq.css">
+<div class="faq-page">
+    <h1>Часто задаваемые вопросы</h1>
 
-<div>
-    {% for faq in faqs %}
-    <details>
-        <summary> {{ faq.question }} </summary>
-        <div>
-            {{ faq.answer|linebreaks }}
-            <small>Добавлено: {{ faq.added_date|date:"d.m.Y" }}</small>
-        </div>
-    </details>
-    <hr>
-    {% empty %}
-    <div>FAQ скоро появятся.</div>
-    {% endfor %}
+    <div class="faq-list">
+        {% for faq in faqs %}
+        <details>
+            <summary>{{ faq.question }}</summary>
+            <div>
+                {{ faq.answer|linebreaks }}
+                <small class="faq-date">Добавлено: {{ faq.added_date|date:"d.m.Y" }}</small>
+            </div>
+        </details>
+        
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

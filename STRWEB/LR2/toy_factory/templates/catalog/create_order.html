@@ -4,7 +4,8 @@
 {% block title %}Создание заказа{% endblock %}
 
 {% block content %}
-<div>
+<link rel="stylesheet" href="/static/css/order.css">
+<div class="main-content">
     
     <a href="{% url 'catalog:order_list' %}">
         &larr; Назад к списку заказов
@@ -33,5 +34,4 @@
         <button type="submit">Оформить заказ</button>
     </form>
 </div>
-
 {% endblock %}

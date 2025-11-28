@@ -3,26 +3,27 @@
 {% block title %}Панель управления{% endblock %}
 
 {% block content %}
-<div>
+<link rel="stylesheet" href="/static/css/employee_dashboard.css">
+<div class="main-content">
     <h1>Панель управления</h1>
 
-    <div>
-        <div>
+    <div class="stats-grid">
+        <div class="stat-card">
             <h3>Всего заказов</h3>
             <p>{{ total_orders }}</p>
         </div>
-        <div>
+        <div class="stat-card">
             <h3>Оплаченных заказов</h3>
             <p>{{ paid_orders }}</p>
         </div>
-        <div>
+        <div class="stat-card">
             <h3>Принятых заказов</h3>
             <p>{{ accepted_orders }}</p>
         </div>
     </div>
 
-    <div>
-        <div>
+    <div class="dashboard-sections">
+        <div class="dashboard-section">
             <h3>Топ клиентов</h3>
             <div>
                 {% if top_clients %}
@@ -50,7 +51,7 @@
             </div>
         </div>
 
-        <div>
+        <div class="dashboard-section">
             <h3>Доступные заказы</h3>
             <div>
                 {% if recent_orders %}

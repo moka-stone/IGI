@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 {% block title %}Удалить отзыв{% endblock %}
 {% block content %}
-<div>
+<link rel="stylesheet" href="/static/css/review.css">
+<div class="form-page">
     <h2>Удалить отзыв</h2>
     <p>Вы уверены, что хотите удалить этот отзыв?</p>
     <form method="POST">
         {% csrf_token %}
-        <button type="submit" >Удалить</button>
+        <button type="submit">Удалить</button>
         <a href="{% url 'home:review_crud_list' %}">Отмена</a>
     </form>
 </div>

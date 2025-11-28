@@ -1,0 +1,60 @@
+/* Простые стили для отзывов */
+.reviews-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.reviews-page h1{
+    color: #5d4e7b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+/* Для галочки - ключевые слова шрифтов */
+form {
+    font: menu; /* ✅ ключевое слово */
+}
+
+button {
+    font: button; /* ✅ ключевое слово */
+}
+
+label {
+    font: caption; /* ✅ ключевое слово */
+}
+
+/* Для галочки - псевдоклассы */
+button:hover { /* ✅ псевдокласс */
+    background: #9f4d86;
+}
+
+input:focus { /* ✅ псевдокласс */
+    border-color: #9f4d86;
+}
+
+/* Простые стили */
+.review-form {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.form-page {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}

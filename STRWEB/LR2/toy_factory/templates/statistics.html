@@ -4,14 +4,14 @@
 {% block title %}Статистика продаж{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="/static/css/statistics.css">
+<div class="main-content">
 <h1>Статистика продаж</h1>
 <p>Ваша тайм-зона: {{ user_timezone }}</p>
 {% if user.is_authenticated and user.is_superuser %}
-<div>
-    <div>
-        <div>
-            Заказчики по городам
-        </div>
+<div class="stats-container">
+    <div class="stat-section">
+        <h3>Заказчики по городам</h3>
         <div>
             {% regroup clients_by_city by city as city_list %}
             <ul>
@@ -30,38 +30,28 @@
             </ul>
         </div>
     </div>
-    <div>
-        <div>
-            Самая популярная игрушка
-        </div>
+    <div class="stat-section">
+        <h3>Самая популярная игрушка</h3>
         <div>
             <p><strong>{{ most_popular.name|default:'Нет данных' }}</strong></p>
         </div>
     </div>
-    <div>
-        <div>
-            Наименее популярная игрушка
-        </div>
+    <div class="stat-section">
+        <h3>Наименее популярная игрушка</h3>
         <div>
             <p><strong>{{ least_popular.name|default:'Нет данных' }}</strong></p>
         </div>
     </div>
-    <div>
-        <div>
-            Ежемесячный объем продаж
-        </div>
+    <div class="stat-section">
+        <h3>Ежемесячный объем продаж</h3>
         <img src="{{ chart_images.monthly_sales }}">
     </div>
-    <div>
-        <div>
-            Годовой отчет поступлений
-        </div>
+    <div class="stat-section">
+        <h3>Годовой отчет поступлений</h3>
         <img src="{{ chart_images.yearly_income }}">
     </div>
-    <div>
-        <div>
-            Тренд продаж (по месяцам)
-        </div>
+    <div class="stat-section">
+        <h3>Тренд продаж (по месяцам)</h3>
         {% if sales_trend and sales_trend|length > 0 %}
         <div>
             <table>
@@ -87,8 +77,9 @@
     </div>
 </div>
 {% else %}
-<div>
-    Доступ к статистике ограничен.
+<div class="stat-section">
+    <p>Доступ к статистике ограничен.</p>
 </div>
 {% endif %}
+</div>
 {% endblock %}

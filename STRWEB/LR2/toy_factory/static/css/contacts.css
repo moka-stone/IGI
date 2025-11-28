@@ -1,0 +1,65 @@
+/* Страница контактов */
+.contacts-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.contacts-page h1 {
+    color: #5d4e7b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.contacts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ТРЕБОВАНИЕ: Flexbox для каждого сотрудника */
+.contact-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.contact-photo {
+    flex-shrink: 0;
+    width: 200px;
+    height: 200px;
+}
+
+.contact-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h2 {
+    color: #5d4e7b;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.contact-details p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.contact-details strong {
+    color: #333;
+    min-width: 80px;
+    display: inline-block;
+}
