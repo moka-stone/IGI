@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{% if current_category %}{{ current_category.name }}{% else %}Все товары{% endif %}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/product_list.css">
+<div class="catalog-page">
+    <h1>Каталог</h1>
+    
+    <div class="filters-section">
+        <h3>Фильтры</h3>
+        <form method="get" action="{% url 'catalog:product_list' %}" class="filter-form">
+            <div class="filter-group">
+                <label for="search">Поиск</label>
+                <input type="text" id="search" name="q" value="{{ search_query }}" placeholder="Название товара">
+            </div>
+
+            <div class="filter-group">
+                <label for="category">Категория</label>
+                <select id="category" name="category">
+                    <option value="">Все категории</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if current_category and category.id == current_category.id %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Цена</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" name="min_price" placeholder="От" value="{{ min_price }}">
+                    <input type="number" name="max_price" placeholder="До" value="{{ max_price }}">
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <label for="sort">Сортировка</label>
+                <select id="sort" name="sort">
+                    <option value="price_desc" {% if 'price_desc' in current_sort %}selected{% endif %}>Сначала дорогие</option>
+                    <option value="price_asc" {% if 'price_asc' in current_sort %}selected{% endif %}>Сначала дешевые</option>
+                    <option value="name_asc" {% if 'name_asc' in current_sort %}selected{% endif %}>По названию (А-Я)</option>
+                    <option value="name_desc" {% if 'name_desc' in current_sort %}selected{% endif %}>По названию (Я-А)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="filter-button">Применить</button>
+        </form>
+    </div>
+    
+    <div class="pagination-controls-section">
+        <label for="per-page-select">Элементов на странице:</label>
+        <select id="per-page-select">
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">9</option>
+            <option value="12">12</option>
+        </select>
+    </div>
+
+    {% if search_query %}
+    <h4 class="search-results">Результаты поиска: "{{ search_query }}"</h4>
+    {% endif %}
+
+    <!-- ТРЕБОВАНИЕ: CSS Grid Layout -->
+    <div class="products-grid" id="products-grid">
+        {% if not object_list %}
+        <div class="no-products">
+            Товары не найдены
+        </div>
+        {% else %}
+            {% for product in object_list %}
+            <div class="product-card" data-product-id="{{ product.id }}">
+                <a href="{% url 'catalog:product_detail' product.id %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                </a>
+                <h4>{{ product.name }}</h4>
+                <p class="product-category">{{ product.category.name }}</p>
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-code">Код: {{ product.product_code }}</p>
+                <p class="product-price">{{ product.price }} руб</p>
+                <a href="{% url 'catalog:product_detail' product.id %}" class="details-link">Подробнее</a>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    
+    <!-- Пагинация -->
+    <div class="pagination-wrapper" id="pagination-wrapper"></div>
+</div>
+
+<script src="/static/js/product_pagination.js"></script>
+{% endblock %}

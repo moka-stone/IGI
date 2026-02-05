@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать отзыв{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="/static/css/review.css">
+<div class="form-page">
+    <h2>Редактировать отзыв</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+        <a href="{% url 'home:review_crud_list' %}">Назад</a>
+    </form>
+</div>
+{% endblock %}

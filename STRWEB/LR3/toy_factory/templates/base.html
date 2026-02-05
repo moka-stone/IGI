@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="https://schema.org/WebSite" style="overflow-x: hidden">
+
+<head>
+    <title>Фабрика игрушек</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/media/MTFabout/iconmtf.png" type="image/png">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <meta itemprop="name" content="Фабрика игрушек">
+    <meta itemprop="url" content="{% url 'home:index' %}">
+    <meta name="description" content="Фабрика игрушек: каталог, товары, заказы, новости, контакты, отзывы.">
+    <script>
+        // Применяем тему сразу, до загрузки DOM
+        (function() {
+            const theme = localStorage.getItem('theme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark-theme');
+                // Добавляем стиль для body до его загрузки
+                const style = document.createElement('style');
+                style.id = 'theme-inline-style';
+                style.textContent = 'body { background: -webkit-linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }';
+                document.head.appendChild(style);
+            }
+        })();
+    </script>
+    <script src="/static/js/theme.js"></script>
+        
+</head>
+
+<body>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему">🌙</button>
+    <header>
+        <div class="header-div" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <div class="headinfo">
+                <a href="/" accesskey="h"><img src="/media/MTFabout/iconmtf.png" alt="Логотип компании"/></a>
+                <h1 title="Главное название" itemprop="name">Фабрика игрушек</h1>
+            </div>
+            <nav title="navbase"itemprop="mainEntity" itemscope itemtype="https://schema.org/SiteNavigationElement">
+                <ul class="nav-list">
+                    <li><a href="{% url 'home:index' %}" itemprop="url">Главная</a></li>
+                    <li><a href="{% url 'home:demo' %}" itemprop="url">Демонстрация функционала</a></li>
+                    <li><a href="{% url 'home:about' %}" itemprop="url">О компании</a></li>
+                    <li><a href="{% url 'home:news' %}" itemprop="url">Новости</a></li>
+                    <li><a href="{% url 'home:faq' %}" itemprop="url">FAQ</a></li>
+                    <li><a href="{% url 'home:contacts' %}" itemprop="url">Контакты</a></li>
+                    <li><a href="{% url 'home:vacancies' %}" itemprop="url">Вакансии</a></li>
+                    <li><a href="{% url 'home:review_crud_list' %}" itemprop="url">Отзывы</a></li>
+                    <li><a href="{% url 'home:promocodes' %}" itemprop="url">Промокоды</a></li>
+                    <li><a href="{% url 'catalog:product_list' %}" itemprop="url">Каталог</a></li>
+                    {% if user.is_authenticated %}
+                        {% if user.is_superuser %}
+                            <li><a href="{% url 'catalog:statistics' %}" itemprop="url">Статистика</a></li>
+                        {% endif %}
+                        {% if user.employee %}
+                            <li><a href="{% url 'catalog:employee_dashboard' %}" itemprop="url">Панель управления</a></li>
+                            <li><a href="{% url 'users:profile' %}" itemprop="url">Профиль</a></li>
+                        {% elif user.client %}
+                            <li><a href="{% url 'catalog:order_list' %}" itemprop="url">Заказы</a></li>
+                            <li><a href="{% url 'catalog:pickup_points' %}" itemprop="url">Пункты самовывоза</a></li>
+                            <li><a href="{% url 'users:profile' %}" itemprop="url">Профиль</a></li>
+                        {% endif %}
+                        <li>
+                            <span style="color:#bbcada">{{ user.get_full_name|default:user.username }}</span>
+                            {% if user.is_superuser %}
+                                <span style="color:#9f4d86"> (админ)</span>
+                            {% elif user.employee %}
+                                <span style="color:#9f4d86"> (сотрудник)</span>
+                            {% elif user.client %}
+                                <span style="color:#9f4d86"> (клиент)</span>
+                            {% endif %}
+                        </li>
+                        <li><a href="{% url 'users:logout' %}" itemprop="url">Выйти</a></li>
+                    {% else %}
+                        <li><a href="{% url 'users:login' %}" itemprop="url">Войти</a></li>
+                        <li><a href="{% url 'users:register' %}" itemprop="url">Регистрация</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main>
+        {% if messages %}
+        {% for message in messages %}
+        <div>
+            {{ message }}
+            <button type="button">×</button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>© 2025 Фабрика игрушек. Все права защищены.</p>
+        <a href="{% url 'home:policy' %}">Политика конфиденциальности</a>
+    </footer>
+</body>
+
+</html>

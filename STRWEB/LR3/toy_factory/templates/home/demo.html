@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+
+{% block title %}Демонстрация функционала{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/demo.css">
+<link rel="stylesheet" href="/static/css/contacts_table.css">
+<link rel="stylesheet" href="/static/css/preloader.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<div class="main-content">
+    <h1>Демонстрация функционала</h1>
+    
+    <h2>Таблица контактов</h2>
+    
+    <div class="table-controls">
+        <button id="add-btn" class="btn-add">Добавить</button>
+        <div class="filter-section">
+            <input type="text" id="filter-input" placeholder="Поиск...">
+            <button id="filter-btn" class="btn-filter">Найти</button>
+        </div>
+    </div>
+
+    <!-- Форма добавления -->
+    <div id="add-form-container" class="add-form-container" style="display: none;">
+        <form id="add-form" class="add-form">
+            <h3>Добавить сотрудника</h3>
+            <div class="form-group">
+                <label for="name">ФИО:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Должность:</label>
+                <input type="text" id="position" name="position" required>
+            </div>
+            <div class="form-group">
+                <label for="photo-url">URL фото:</label>
+                <input type="text" id="photo-url" name="photo-url" required>
+                <span id="url-validation" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="description">Описание:</label>
+                <textarea id="description" name="description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон:</label>
+                <input type="text" id="phone" name="phone" required>
+                <span id="phone-validation" class="validation-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" id="submit-btn" disabled>Добавить в таблицу</button>
+                <button type="button" id="cancel-btn">Отмена</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-wrapper">
+        <table id="contacts-table">
+            <thead>
+                <tr>
+                    <th><span class="sortable" data-column="name">ФИО</span><span class="sort-indicator"></span></th>
+                    <th><span class="sortable" data-column="photo">Фото</span><span class="sort-indicator"></span></th>
+                    <th><span class="sortable" data-column="position">Должность</span><span class="sort-indicator"></span></th>
+                    <th><span class="sortable" data-column="description">Описание</span><span class="sort-indicator"></span></th>
+                    <th><span class="sortable" data-column="phone">Телефон</span><span class="sort-indicator"></span></th>
+                    <th><span class="sortable" data-column="email">Email</span><span class="sort-indicator"></span></th>
+                    <th>Выбор</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Данные будут загружены через JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="pagination" class="pagination"></div>
+
+    <div class="actions-section">
+        <button id="premiate-btn" class="btn-premiate">Премировать</button>
+    </div>
+
+    <div id="selected-info" class="selected-info"></div>
+    <div id="row-details" class="row-details"></div>
+    <div id="premiate-result" class="premiate-result"></div>
+    
+    <!-- Прелоадер -->
+    <div id="preloader-container" class="preloader-container" style="display: none;">
+        <div class="preloader">
+            <div class="cube"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+    
+    <h2>Генератор элементов формы Select</h2>
+    <div class="select-generator-section">
+        <label class="checkbox-label">
+            <input type="checkbox" id="enable-select-generator">
+            Включить генератор элементов Select
+        </label>
+        <div id="select-generator-container" style="display: none;">
+            <button id="add-select-btn" class="btn-add">Добавить Select</button>
+            <div id="selects-container"></div>
+        </div>
+    </div>
+    
+    <h2>Управление сотрудниками (Классы и наследование)</h2>
+    <div class="employees-section">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="prototype">Прототипное наследование</button>
+            <button class="tab-btn" data-tab="class">Классы (extends)</button>
+        </div>
+        
+        <div id="prototype-tab" class="tab-content active">
+            <h3>Прототипное наследование</h3>
+            <div class="employee-form">
+                <h4>Добавить сотрудника</h4>
+                <input type="text" id="proto-name" placeholder="Фамилия и инициалы" required>
+                <select id="proto-gender" required>
+                    <option value="">Выберите пол</option>
+                    <option value="мужской">Мужской</option>
+                    <option value="женский">Женский</option>
+                </select>
+                <select id="proto-status" required>
+                    <option value="">Семейное положение</option>
+                    <option value="холост">Холост/Не замужем</option>
+                    <option value="женат">Женат</option>
+                    <option value="замужем">Замужем</option>
+                    <option value="разведен">Разведен/Разведена</option>
+                </select>
+                <input type="text" id="proto-department" placeholder="Отдел (дополнительно)">
+                <button id="proto-add-btn" class="btn-add">Добавить</button>
+            </div>
+            <div id="proto-list" class="employee-list"></div>
+            <button id="proto-check-btn" class="btn-check">Проверить вероятность брака</button>
+            <div id="proto-result" class="result"></div>
+        </div>
+        
+        <div id="class-tab" class="tab-content">
+            <h3>Классы с extends</h3>
+            <div class="employee-form">
+                <h4>Добавить сотрудника</h4>
+                <input type="text" id="class-name" placeholder="Фамилия и инициалы" required>
+                <select id="class-gender" required>
+                    <option value="">Выберите пол</option>
+                    <option value="мужской">Мужской</option>
+                    <option value="женский">Женский</option>
+                </select>
+                <select id="class-status" required>
+                    <option value="">Семейное положение</option>
+                    <option value="холост">Холост/Не замужем</option>
+                    <option value="женат">Женат</option>
+                    <option value="замужем">Замужем</option>
+                    <option value="разведен">Разведен/Разведена</option>
+                </select>
+                <input type="text" id="class-department" placeholder="Отдел (дополнительно)">
+                <button id="class-add-btn" class="btn-add">Добавить</button>
+            </div>
+            <div id="class-list" class="employee-list"></div>
+            <button id="class-check-btn" class="btn-check">Проверить вероятность брака</button>
+            <div id="class-result" class="result"></div>
+        </div>
+    </div>
+    
+    <h2>Проверка возраста</h2>
+    <div class="age-check-section">
+        <div class="age-check-form">
+            <label for="birthdate-input">Введите дату рождения:</label>
+            <input type="date" id="birthdate-input" required>
+            <button id="check-age-btn" class="btn-check-age">Проверить</button>
+        </div>
+        <div id="age-result" class="age-result"></div>
+    </div>
+    
+    <h2>Демонстрация Web API</h2>
+    <div id="api-demo-container"></div>
+    
+    <h2>Визуализация графика функции</h2>
+    <div id="chart-visualizer-container"></div>
+</div>
+
+<script src="/static/js/contacts_table.js"></script>
+<script src="/static/js/select_generator.js"></script>
+<script src="/static/js/age_check.js"></script>
+<script src="/static/js/employees_classes.js"></script>
+<script src="/static/js/web_api_demo.js"></script>
+<script src="/static/js/chart_visualizer.js"></script>
+<script>
+    // Передаем данные с сервера в JavaScript
+    const contactsData = [
+        {% for contact in contacts %}
+        {
+            id: {{ contact.id }},
+            name: "{{ contact.name|escapejs }}",
+            position: "{{ contact.position|escapejs }}",
+            photo: "{{ contact.photo.url|escapejs }}",
+            description: "{{ contact.description|escapejs }}",
+            phone: "{{ contact.phone|escapejs }}",
+            email: "{{ contact.email|escapejs }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+</script>
+{% endblock %}

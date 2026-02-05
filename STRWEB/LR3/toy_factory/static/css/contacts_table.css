@@ -1,0 +1,266 @@
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.btn-add, .btn-filter, .btn-premiate {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.btn-add:hover, .btn-filter:hover, .btn-premiate:hover {
+    transform: translateY(-2px);
+}
+
+.filter-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-section input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.add-form-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.add-form h3 {
+    margin-top: 0;
+    color: #5d4e7b;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #5d4e7b;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.form-group input.invalid {
+    border-color: red;
+    background-color: #ffe6e6;
+}
+
+.validation-message {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.validation-message.valid {
+    color: green;
+}
+
+.validation-message.invalid {
+    color: red;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.form-buttons button[type="submit"] {
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+}
+
+.form-buttons button[type="submit"]:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.form-buttons button[type="button"] {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+}
+
+.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sortable:hover {
+    text-decoration: underline;
+}
+
+.sort-indicator {
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+td {
+    padding: 12px;
+}
+
+.contact-photo-small {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.contact-photo-large {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.page-btn {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: #f0f0f0;
+}
+
+.page-btn.active {
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.actions-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.selected-info {
+    margin: 15px 0;
+    padding: 10px;
+    background: #e8f4f8;
+    border-radius: 5px;
+    color: #5d4e7b;
+    font-weight: 500;
+}
+
+.row-details {
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.row-details h3 {
+    margin-top: 0;
+    color: #5d4e7b;
+}
+
+.premiate-result {
+    margin: 20px 0;
+    padding: 20px;
+    background: #fff9e6;
+    border-radius: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.premiate-result h3 {
+    margin-top: 0;
+    color: #5d4e7b;
+}
+
+

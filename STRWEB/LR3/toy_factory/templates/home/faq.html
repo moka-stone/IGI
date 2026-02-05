@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}FAQ - Часто задаваемые вопросы{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/faq.css">
+<div class="faq-page">
+    <h1>Часто задаваемые вопросы</h1>
+
+    <div class="faq-list">
+        {% for faq in faqs %}
+        <details>
+            <summary>{{ faq.question }}</summary>
+            <div>
+                {{ faq.answer|linebreaks }}
+                <small class="faq-date">Добавлено: {{ faq.added_date|date:"d.m.Y" }}</small>
+            </div>
+        </details>
+        
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

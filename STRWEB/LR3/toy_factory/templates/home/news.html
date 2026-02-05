@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/news.css">
+<div class="news-page">
+    <h1>Новости</h1>
+
+    <div class="news-list">
+        {% for news_item in news_list %}
+            <div class="news-card">
+                <img src="{{ news_item.image.url }}" alt="{{ news_item.title }}" class="news-image">
+                <h4>{{ news_item.title }}</h4>
+                <div class="news-summary">
+                    {{ news_item.summary}}
+                </div>
+                
+                <div class="news-meta">
+                    <small class="news-date">{{ news_item.created_at|date:"d.m.Y" }}</small>
+                    <a href="{% url 'home:news_detail' news_item.pk %}" class="read-more">Читать далее</a>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+</div>
+{% endblock %}

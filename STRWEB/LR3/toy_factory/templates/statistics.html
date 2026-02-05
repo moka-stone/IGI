@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Статистика продаж{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/statistics.css">
+<div class="main-content">
+<h1>Статистика продаж</h1>
+<p>Ваша тайм-зона: {{ user_timezone }}</p>
+{% if user.is_authenticated and user.is_superuser %}
+<div class="stats-container">
+    <div class="stat-section">
+        <h3>Заказчики по городам</h3>
+        <div>
+            {% regroup clients_by_city by city as city_list %}
+            <ul>
+                {% for city in city_list %}
+                <li>
+                    <strong>{{ city.grouper }}:</strong>
+                    <ul>
+                        {% for client in city.list %}
+                        <li>{{ client.company_name }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% empty %}
+                <li>Нет данных</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="stat-section">
+        <h3>Самая популярная игрушка</h3>
+        <div>
+            <p><strong>{{ most_popular.name|default:'Нет данных' }}</strong></p>
+        </div>
+    </div>
+    <div class="stat-section">
+        <h3>Наименее популярная игрушка</h3>
+        <div>
+            <p><strong>{{ least_popular.name|default:'Нет данных' }}</strong></p>
+        </div>
+    </div>
+    <div class="stat-section">
+        <h3>Ежемесячный объем продаж</h3>
+        <img src="{{ chart_images.monthly_sales }}">
+    </div>
+    <div class="stat-section">
+        <h3>Годовой отчет поступлений</h3>
+        <img src="{{ chart_images.yearly_income }}">
+    </div>
+    <div class="stat-section">
+        <h3>Тренд продаж (по месяцам)</h3>
+        {% if sales_trend and sales_trend|length > 0 %}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Месяц</th>
+                        <th>Сумма продаж</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for month, total in sales_trend %}
+                    <tr>
+                        <td>{{ month|date:'Y-m' }}</td>
+                        <td>{{ total|default:0 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div>Нет данных для отображения тренда продаж.</div>
+        {% endif %}
+    </div>
+</div>
+{% else %}
+<div class="stat-section">
+    <p>Доступ к статистике ограничен.</p>
+</div>
+{% endif %}
+</div>
+{% endblock %}

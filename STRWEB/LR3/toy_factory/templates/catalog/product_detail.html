@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/product_detail.css">
+<div class="product-detail">
+    <div class="product-container">
+        <div>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+        </div>
+        <div class="product-info">
+            <h1>{{ product.name }}</h1>
+            <p class="product-price">{{ product.price }} руб</p>
+            <p class="product-category">Категория: {{ product.category.name }}</p>
+            <p class="product-description">{{ product.description }}</p>
+            <p class="product-code">Код товара: {{ product.product_code }}</p>
+
+            <a href="{% url 'catalog:create_order' %}?product={{ product.id }}" class="order-button">Заказать</a>
+            
+            <div>
+                <a href="{% url 'catalog:product_list' %}" class="back-link">← Вернуться к списку товаров</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

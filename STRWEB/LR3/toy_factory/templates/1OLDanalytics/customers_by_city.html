@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Клиенты по городам{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Статистика по городам</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Город</th>
+                            <th>Количество клиентов</th>
+                            <th>Количество заказов</th>
+                            <th>Общая сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for city in cities %}
+                        <tr>
+                            <td>{{ city.city }}</td>
+                            <td>{{ city.total_customers }}</td>
+                            <td>{{ city.total_orders }}</td>
+                            <td>{{ city.total_spent|floatformat:2 }} руб.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/profile.css">
+<div class="main-content">
+    <h1>Профиль пользователя</h1>
+    <p><strong>Ваша тайм-зона:</strong> {{ user_timezone }}</p>
+    <form method="post">
+        {% csrf_token %}
+
+        <div>
+            <h2>Основная информация</h2>
+            {{ user_form.as_p }}
+        </div>
+
+        {% if client_form %}
+        <div>
+            <h2>Информация о компании</h2>
+            {{ client_form.as_p }}
+        </div>
+        {% endif %}
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* scroll-behavior: smooth; - убрано, чтобы избежать нежелательного скролла при загрузке */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  /* Приятная пастельная детская цветовая палитра */
+  --primary-color: #FF9AA2;      /* Мягкий розово-красный */
+  --primary-dark: #FF7B85;       /* Немного темнее */
+  --primary-light: #FFB3B8;     /* Светлее */
+  --secondary-color: #95E1D3;    /* Мягкий бирюзовый */
+  --accent-color: #FFD3A5;       /* Пастельный персиковый */
+  
+  /* Дополнительные пастельные цвета */
+  --color-orange: #FFC4A3;      /* Пастельный оранжевый */
+  --color-green: #AAE5B3;       /* Мягкий зеленый */
+  --color-blue: #A8D8EA;        /* Пастельный голубой */
+  --color-purple: #C7B9FF;      /* Мягкий фиолетовый */
+  --color-pink: #FFB6C1;        /* Пастельный розовый */
+  
+  /* Светлый фон для детского дизайна */
+  --bg-primary: #F0F8FF;        /* Светло-голубой фон */
+  --bg-secondary: #FFFFFF;       /* Белый */
+  --bg-hover: #E8F4F8;          /* Светло-голубой при наведении */
+  --bg-card: #FFFFFF;           /* Белый для карточек */
+  
+  /* Темный текст на светлом фоне */
+  --text-primary: #2D3436;      /* Темно-серый */
+  --text-secondary: #636e72;    /* Серый */
+  --text-light: #b2bec3;       /* Светло-серый */
+  
+  --border-color: #FFD3A5;      /* Пастельная граница */
+  --border-radius: 16px;        /* Более округлые углы */
+  --shadow: 0 4px 12px rgba(255, 154, 162, 0.12);
+  --shadow-hover: 0 8px 24px rgba(255, 154, 162, 0.2);
+  
+  /* Приятные кнопки */
+  --button-color: #FF9AA2;      /* Мягкая розовая кнопка */
+  --button-hover: #FF7B85;      /* Темнее при наведении */
+  --button-active: #FF6B75;     /* При нажатии */
+  --button-secondary: #95E1D3;   /* Бирюзовая кнопка */
+  --button-accent: #FFD3A5;     /* Персиковая кнопка */
+  
+  --success: #AAE5B3;           /* Мягкий зеленый */
+  --error: #FF9AA2;             /* Мягкий розовый */
+  --warning: #FFD3A5;           /* Персиковый */
+  --info: #95E1D3;              /* Бирюзовый */
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+

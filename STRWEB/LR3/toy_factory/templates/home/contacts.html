@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/contacts.css">
+<div class="contacts-page">
+    <h1>Контакты</h1>
+
+    <div class="contacts-list">
+        {% for contact in contacts %}
+        <!-- ТРЕБОВАНИЕ: Flexbox для размещения -->
+        <div class="contact-card">
+            {% if contact.photo %}
+            <div class="contact-photo">
+                <img src="{{ contact.photo.url }}" alt="{{ contact.name }}">
+            </div>
+            {% endif %}
+            
+            <div class="contact-info">
+                <h2>{{ contact.name }}</h2>
+                <div class="contact-details">
+                    <p><strong>Должность:</strong> {{ contact.position }}</p>
+                    {% if contact.phone %}
+                    <p><strong>Телефон:</strong> {{ contact.phone }}</p>
+                    {% endif %}
+                    {% if contact.email %}
+                    <p><strong>Email:</strong> {{ contact.email }}</p>
+                    {% endif %}
+                    {% if contact.description %}
+                    <p><strong>Описание:</strong> {{ contact.description }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

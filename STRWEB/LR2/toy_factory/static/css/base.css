@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    background: -webkit-linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

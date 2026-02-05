@@ -1,0 +1,252 @@
+.productionTracker {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 18px rgba(255, 154, 162, 0.15);
+  border: 4px solid var(--border-color);
+  margin-top: 2.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.refreshBtn,
+.autoRefreshBtn {
+  padding: 0.9rem 1.5rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  white-space: nowrap;
+}
+
+.refreshBtn {
+  background: var(--button-color);
+  color: white;
+}
+
+.refreshBtn:hover:not(:disabled) {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.refreshBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.autoRefreshBtn {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.autoRefreshBtn:hover {
+  background: #7DD3C1;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+}
+
+.error {
+  background: rgba(255, 154, 162, 0.2);
+  color: var(--error);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.lastUpdate {
+  text-align: right;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.productionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.productionItem {
+  background: var(--bg-secondary);
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 3px solid var(--border-color);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(255, 154, 162, 0.1);
+}
+
+.productionItem:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.itemName {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.orderInfo {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: var(--bg-hover);
+  border-radius: 12px;
+}
+
+.orderDetails {
+  color: var(--text-primary);
+  font-weight: 600;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.orderTime {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+}
+
+.itemStatus {
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.progressBar {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: var(--bg-hover);
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progressFill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.progressText {
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  z-index: 1;
+}
+
+.itemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.estimatedTime {
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.statusBtn {
+  padding: 0.6rem 1.2rem;
+  background: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.statusBtn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .productionTracker {
+    padding: 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .controls {
+    width: 100%;
+  }
+
+  .refreshBtn,
+  .autoRefreshBtn {
+    flex: 1;
+  }
+}
+

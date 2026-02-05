@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Open+Sans:wght@400;600&display=swap');
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#dogImage {
+    display: block;
+    margin: 30px auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+p{
+    font-family: 'Roboto';
+}
+#lala::first-letter {
+    font-size: 1em;
+    font-weight: bold;
+    color: #e74c3c;
+    line-height: 1;
+}
+
+.quote::before { content: "«"; color: #169dd7; }
+.quote::after { content: "»"; color: #ffffff; }
+
+.unicode-list li{
+    list-style: none;
+}
+.unicode-list li::before {
+    content: "\20aa";
+    color: #27ae60;
+    margin-right: 8px;
+}
+
+::selection {
+    background-color: #ff0000;
+    color: white;
+}
+
+q:lang(de) {    quotes: "\201E" "\201C";     }   
+q:lang(en) {    quotes: "\201C" "\201D";    }   
+q:lang(fr), q:lang(ru) { quotes: "\00AB" "\00BB";    }
+
+

@@ -1,0 +1,122 @@
+/* Страница статистики */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #5d4e7b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+p {
+    color: #555;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.stat-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-section h3 {
+    color: #5d4e7b;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.stat-section p {
+    text-align: left;
+    margin: 10px 0;
+}
+
+.stat-section strong {
+    color: #9f4d86;
+    font-size: 20px;
+}
+
+.stat-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+ul li strong {
+    color: #5d4e7b;
+    display: block;
+    margin-bottom: 5px;
+}
+
+ul ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+ul ul li {
+    background: white;
+    border-left: 3px solid #9f4d86;
+}
+
+table {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+}
+
+thead {
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 500;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tbody tr:hover {
+    background: #f8f9fa;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+

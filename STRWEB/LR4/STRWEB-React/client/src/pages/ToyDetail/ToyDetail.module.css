@@ -1,0 +1,366 @@
+.propertyDetail {
+  width: 100%;
+}
+
+.backBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+
+.backBtn:hover {
+  background: var(--bg-hover);
+  transform: translateX(-4px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.editBtn {
+  background: var(--button-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.editBtn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.deleteBtn {
+  background: var(--error);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.deleteBtn:hover {
+  background: rgba(220, 53, 69, 0.8);
+  transform: translateY(-2px);
+}
+
+.content {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.mainSection {
+  display: grid;
+  gap: 2rem;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  height: 400px;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 300px;
+  background: var(--bg-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  border-radius: var(--border-radius);
+}
+
+.analyzeBtn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(122, 171, 153, 0.9);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+.analyzeBtn:hover {
+  background: var(--button-color);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.addToCartBtn {
+  padding: 0.75rem 1.5rem;
+  background: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.addToCartBtn:hover {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--button-color);
+}
+
+.type {
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.detailValue {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.description {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.description h2 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.description p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.aiSection {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-hover);
+  border-radius: var(--border-radius);
+}
+
+.aiBtn {
+  background: var(--button-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  margin-bottom: 1rem;
+}
+
+.aiBtn:hover:not(:disabled) {
+  background: var(--button-hover);
+  transform: translateY(-2px);
+}
+
+.aiBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.aiDescription {
+  margin-top: 1rem;
+}
+
+.aiDescription h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.aiDescription p {
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.dates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.dateBlock {
+  background: var(--bg-hover);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.dateBlock h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.dateBlock p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+}
+
+.error {
+  background: rgba(220, 53, 69, 0.2);
+  color: var(--error);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.reviewsSection {
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+
+  .images {
+    grid-template-columns: 1fr;
+  }
+}
+
+.addToCartSection {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quantityInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quantityInput label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.quantityField {
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  width: 150px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.quantityField:focus {
+  outline: none;
+  border-color: var(--button-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+

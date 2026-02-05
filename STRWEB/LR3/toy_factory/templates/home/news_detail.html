@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/news_detail.css">
+<div class="news-detail">
+    <article class="news-article">
+        <h1>{{ news.title }}</h1>
+        <small class="news-date">Опубликовано: {{ news.created_at|date:"d.m.Y" }}</small>
+
+        {% if news.image %}
+        <div>
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-image">
+        </div>
+        {% endif %}
+
+        <!-- ТРЕБОВАНИЕ: многоколоночный макет -->
+        <div class="news-content">
+            {{ news.content }}
+        </div>
+    </article>
+</div>
+
+{% endblock %}

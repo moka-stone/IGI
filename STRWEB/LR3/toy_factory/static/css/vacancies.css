@@ -1,0 +1,77 @@
+/* Страница вакансий */
+.vacancies-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.vacancies-page h1 {
+    color: #5d4e7b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.vacancies-list {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ТРЕБОВАНИЕ: плавающие блоки с float и clear */
+.vacancy-card {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    
+    /* Float layout */
+    float: left;
+    width: 48%;
+    box-sizing: border-box;
+}
+
+/* Четные элементы смещаем вправо */
+.vacancy-card:nth-child(even) {
+    float: right;
+}
+
+/* ТРЕБОВАНИЕ: clear после каждого второго элемента */
+.vacancy-card:nth-child(2n+1) {
+    clear: both;
+}
+
+.vacancy-card h2 {
+    color: #5d4e7b;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.salary {
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.vacancy-section {
+    margin-bottom: 15px;
+}
+
+.vacancy-section strong {
+    color: #5d4e7b;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.vacancy-section p {
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+}

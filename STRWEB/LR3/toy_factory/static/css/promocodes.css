@@ -1,0 +1,115 @@
+.promocodes-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.promocodes-page h1 {
+    color: #5d4e7b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+/* Активные промокоды */
+.active-promocodes {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.promocode-card {
+    background: linear-gradient(135deg, #bbcada 0%, #9f4d86 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.promocode-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.promocode-code {
+    font-size: 1.8em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 15px 0;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.promocode-date {
+    opacity: 0.9;
+    font-size: 0.9em;
+}
+
+/* Архив промокодов */
+details {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+summary {
+    padding: 25px;
+    cursor: pointer;
+    list-style: none;
+    color: #5d4e7b;
+    font-weight: 500;
+    font-size: 1.2em;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+.inactive-promocodes {
+    padding: 0 25px 25px;
+}
+
+.inactive-promocode {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    color: #666;
+}
+
+.inactive-promocode h3 {
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.inactive-code {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #888;
+}
+
+.expired-date {
+    color: #999;
+    font-size: 0.9em;
+}

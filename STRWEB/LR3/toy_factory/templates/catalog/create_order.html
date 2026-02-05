@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Создание заказа{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/order.css">
+<div class="main-content">
+    
+    <a href="{% url 'catalog:order_list' %}">
+        &larr; Назад к списку заказов
+    </a>
+
+
+    <h2>Создание нового заказа</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="product">Продукция</label>
+            <select name="product" id="product" required>
+                {% for product in products %}
+                <option value="{{ product.id }}" {% if product.id|stringformat:"s" == selected_product_id %}selected{% endif %}>
+                    {{ product.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="quantity">Количество</label>
+            <input type="number" name="quantity" id="quantity" min="100" required>
+        </div>
+        
+        <button type="submit">Оформить заказ</button>
+    </form>
+</div>
+{% endblock %}
